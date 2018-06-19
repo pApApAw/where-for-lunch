@@ -18,12 +18,16 @@ class HomePage extends Component {
   }
   render() {
     const { condition, place } = this.props;
+    let btnStatus = true;
+    if (condition.latitude) {
+      btnStatus = false;
+    }
     return (
       <div className="homePageWrapper">
         <Place place={place} />
         <div className="searchWrapper">
           <Condition condition={condition} action={this.handleOnConditionChange}/>
-          <Button onClick={this.handleOnClick} theme="homepageClick" />
+          <Button onClick={this.handleOnClick} btnStatus={btnStatus} theme="homepageClick" />
         </div>
       </div>
     );
@@ -46,6 +50,7 @@ HomePage.propTypes = {
   place: PropTypes.object,
   fetchPlaces: PropTypes.func,
   setRadius: PropTypes.func,
+  btnStatus: PropTypes.bool,
 };
 export default connect(
   mapStateToProps,

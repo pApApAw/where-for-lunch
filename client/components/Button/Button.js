@@ -9,7 +9,6 @@ const Button = ({ onClick, children, theme, btnStatus }) => {
       className={classNames({
         [styles.root]: true,
         [styles[theme]]: true,
-        [styles.colorActive]: !btnStatus,
         [styles.colorNotActive]: btnStatus,
       })}
       onClick={onClick}

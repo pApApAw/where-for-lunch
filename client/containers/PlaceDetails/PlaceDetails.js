@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import GoogleMap from 'components/GoogleMap/GoogleMap';
 import placeActions from 'actions/placeActions';
 import styles from './PlaceDetails.css';
 
@@ -16,8 +17,8 @@ class PlaceDetails extends Component {
     let images = null;
     if (details.photos) {
         images = details.photos.map(image => {
-           return <img key={image} src={image} alt="" className="img-responsive" />
-        });
+           return <img key={image} src={image} />
+        }); 
     }
 
     return (
@@ -28,7 +29,8 @@ class PlaceDetails extends Component {
             <div>{ details.phone }</div>
             <div>{ details.categories }</div>
             <div>{ details.price }</div>
-          {images}
+            { details.coordinates ? <GoogleMap coordinates={details.coordinates} googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places" loadingElement={<div style={{ height: `100%` }} />} containerElement={<div style={{ height: `400px` }} />} mapElement={<div style={{ height: `100%` }} />} /> : null }
+            {images}
           </div>
         </div>
       </div>

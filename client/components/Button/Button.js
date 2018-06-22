@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Button.css';
 
-const Button = ({ onClick, children, theme, btnStatus }) => {
+const Button = ({ onClick, theme, btnStatus }) => {
   return (
     <button
       className={classNames({
@@ -14,7 +14,6 @@ const Button = ({ onClick, children, theme, btnStatus }) => {
       onClick={onClick}
       disabled={ btnStatus }
     >
-      { children }
     </button>
   );
 };
